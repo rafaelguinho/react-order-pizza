@@ -6,7 +6,7 @@ function Orders() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch("https://localhost:44330/api/orders")
+    fetch("https://localhost:44352/api/orders")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -29,7 +29,7 @@ function Orders() {
       <ul>
         {items.map((item) => (
           <li key={item.id}>
-            {item.Flavor} {item.Size}
+            {item.flavor} {item.size}
           </li>
         ))}
       </ul>
