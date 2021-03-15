@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
+import Order from './Order'
 
 function Orders() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    console.log(`${isLoaded}: isLoaded changed`);
+  }, [isLoaded]);
 
   useEffect(() => {
     fetch("https://localhost:44352/api/orders")
@@ -28,9 +33,7 @@ function Orders() {
     return (
       <ul>
         {items.map((item) => (
-          <li key={item.id}>
-            {item.flavor} {item.size}
-          </li>
+          <Order key={item.id} item={item} />
         ))}
       </ul>
     );
