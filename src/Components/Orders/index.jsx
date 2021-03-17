@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Order from './Order'
+import axios from "axios";
+import Order from "./Order";
 
 function Orders() {
   const [error, setError] = useState(null);
@@ -11,18 +12,16 @@ function Orders() {
   }, [isLoaded]);
 
   useEffect(() => {
-    fetch("https://localhost:44352/api/orders")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
+    axios.get("https://localhost:5005/api/orders").then(
+      (response) => {
+        setIsLoaded(true);
+        setItems(response.data);
+      },
+      (error) => {
+        setIsLoaded(true);
+        setError(error);
+      }
+    );
   }, []);
 
   if (error) {
