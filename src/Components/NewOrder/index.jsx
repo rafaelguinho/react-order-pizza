@@ -1,30 +1,73 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 function NewOrder() {
+  const [formData, setformData] = useState({});
+
+  const onValueChange = (event) => {
+    const { name, value } = event.target;
+
+    setformData({ ...formData, [name]: value });
+  };
+
+  const saveOrder = (data) => {
+    axios.post('https://localhost:5005/api/orders', data)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        console.log(formData);
+        saveOrder(formData);
+        setformData({});
+      }}
+    >
       <h2>New order</h2>
       <div>
-        <label for="normal">
+        <label htmlFor="normal">
           Normal
-          <input type="radio" id="normal" name="crust" value="NORMAL" />
+          <input
+            type="radio"
+            name="crust"
+            value="NORMAL"
+            required
+            onChange={(event) => onValueChange(event)}
+          />
         </label>
 
-        <label for="thin">
+        <label htmlFor="thin">
           Thin
-          <input type="radio" id="thin" name="crust" value="THIN" />
+          <input
+            type="radio"
+            name="crust"
+            value="THIN"
+            required
+            onChange={(event) => onValueChange(event)}
+          />
         </label>
       </div>
 
       <div>
-        <label for="flavor">Flavor</label>
-        <input id="flavor" type="text" />
+        <label htmlFor="flavor">Flavor</label>
+        <input
+          name="flavor"
+          type="text"
+          required
+          onChange={(event) => onValueChange(event)}
+        />
       </div>
 
       <div>
-        <label for="size">Choose a size:</label>
+        <label htmlFor="size">Choose a size:</label>
 
-        <select id="size">
+        <select required name="size" onChange={(event) => onValueChange(event)}>
           <option value=""></option>
           <option value="S">Small (4 pieces)</option>
           <option value="M">Medium (6 pieces)</option>
@@ -34,8 +77,13 @@ function NewOrder() {
       </div>
 
       <div>
-        <label for="tableNo">Table No</label>
-        <input id="tableNo" type="number" />
+        <label htmlFor="tableNo">Table No</label>
+        <input
+          required
+          name="tableNo"
+          type="number"
+          onChange={(event) => onValueChange(event)}
+        />
       </div>
 
       <button type="submit">Save</button>
