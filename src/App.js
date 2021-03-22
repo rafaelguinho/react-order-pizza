@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.css";
 import NewOrder from "./Components/NewOrder";
 import Orders from "./Components/Orders";
 

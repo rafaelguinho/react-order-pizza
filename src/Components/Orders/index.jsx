@@ -30,7 +30,7 @@ function Orders() {
     return <div>Loading...</div>;
   } else {
     return (
-      <ul>
+      <ul className="items">
         {items.map((item) => (
           <Order key={item.id} item={item} />
         ))}
