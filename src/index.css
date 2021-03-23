@@ -1,5 +1,11 @@
+html{
+  min-height:100%;/* make sure it is at least as tall as the viewport */
+  position:relative;
+}
 body {
   margin: 0;
+  height:100%;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -85,7 +91,6 @@ nav li:hover a {
 }
 
 input[type=text],input[type=number], select, textarea {
-  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -111,29 +116,39 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+form{
+  padding: 1em 4em;
+  display: grid;
 }
 
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
+form > .button-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
 }
 
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
+button {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  width: 400px;
+  height: 80px;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+button {
+  background-color: white;
+  border: 2px solid #2d3436;
+  color: #2d3436;
+  height: inherit;
+  width: inherit;
+  cursor: pointer;
 }
 
+button:hover {
+  background-color: #2d3436;
+  color: white;
+}
+button:active{
+  border: 3px solid #2d3436;
+}
 
