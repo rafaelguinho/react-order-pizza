@@ -38,7 +38,7 @@ function NewOrder() {
           <input type="radio" name="crust" value="THIN" ref={register} />
         </label>
 
-        <ErrorMessage errors={errors} name="crust" />
+        <ErrorMessage errors={errors} name="crust" data-testid="crustError"/>
       </div>
 
       <label htmlFor="flavor">Flavor</label>
