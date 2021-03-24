@@ -4,7 +4,11 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import schema from './validator'
+import schema from "./validator";
+import Button from "../Button";
+import { Input, Select } from "../Input";
+import Label from "../Label";
+import Form from "../Form";
 
 function NewOrder() {
   const { register, handleSubmit, errors, reset } = useForm({
@@ -25,45 +29,45 @@ function NewOrder() {
   };
 
   return (
-    <form onSubmit={handleSubmit(saveOrder)}>
+    <Form onSubmit={handleSubmit(saveOrder)}>
       <h2>New order</h2>
       <div>
-        <label htmlFor="normal">
+        <Label htmlFor="normal">
           Normal
           <input type="radio" name="crust" value="NORMAL" ref={register} />
-        </label>
+        </Label>
 
-        <label htmlFor="thin">
+        <Label htmlFor="thin">
           Thin
           <input type="radio" name="crust" value="THIN" ref={register} />
-        </label>
+        </Label>
 
-        <ErrorMessage errors={errors} name="crust" data-testid="crustError"/>
+        <ErrorMessage errors={errors} name="crust" data-testid="crustError" />
       </div>
 
-      <label htmlFor="flavor">Flavor</label>
-      <input name="flavor" type="text" ref={register} />
+      <Label htmlFor="flavor">Flavor</Label>
+      <Input name="flavor" type="text" ref={register} />
       <ErrorMessage errors={errors} name="flavor" />
 
-      <label htmlFor="size">Choose a size:</label>
+      <Label htmlFor="size">Choose a size:</Label>
 
-      <select ref={register} name="size">
+      <Select ref={register} name="size">
         <option value=""></option>
         <option value="S">Small (4 pieces)</option>
         <option value="M">Medium (6 pieces)</option>
         <option value="L">Larger (8 pieces)</option>
         <option value="XL">Extra-large (10 pieces)</option>
-      </select>
+      </Select>
       <ErrorMessage errors={errors} name="size" />
 
-      <label htmlFor="tableNo">Table No</label>
-      <input ref={register} name="tableNo" type="number"/>
+      <Label htmlFor="tableNo">Table No</Label>
+      <Input ref={register} name="tableNo" type="number" />
       <ErrorMessage errors={errors} name="tableNo" />
 
       <div className="button-container">
-        <button type="submit">Save</button>
+        <Button type="submit">Save</Button>
       </div>
-    </form>
+    </Form>
   );
 }
 

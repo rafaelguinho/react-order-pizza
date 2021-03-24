@@ -1,17 +1,18 @@
 import { formatTime } from "../../../util";
+import { Item, Size, Timestamp } from "./styles";
 
 const Order = ({ item }) => {
   
   return (
-    <li className="item" key={item.id}>
-      <span data-testid="order-size" className="size">
+    <Item key={item.id}>
+      <Size data-testid="order-size" className="size">
         {item.size}
-      </span>
+      </Size>
       <span data-testid="order-flavor">{item.flavor}</span>
-      <span data-testid="order-timestamp" className="timestamp">
+      <Timestamp data-testid="order-timestamp" className="timestamp">
         {formatTime(item.timestamp)}
-      </span>
-    </li>
+      </Timestamp>
+    </Item>
   );
 };
 
