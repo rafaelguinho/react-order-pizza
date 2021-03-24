@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
 function NewOrder() {
-  const { register, handleSubmit, errors } = useForm({ criteriaMode: "all" });
+  const { register, handleSubmit, errors, reset } = useForm({ criteriaMode: "all" });
 
   const saveOrder = (data) => {
     axios
       .post("https://localhost:5005/api/orders", data)
       .then(function (response) {
+        alert('New order saved');
+        reset({});
         console.log(response);
       })
       .catch(function (error) {
