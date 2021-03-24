@@ -1,14 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 function NewOrder() {
-  const [formData, setformData] = useState({});
-
-  const onValueChange = (event) => {
-    const { name, value } = event.target;
-
-    setformData({ ...formData, [name]: value });
-  };
+  const { register, handleSubmit, errors } = useForm({ criteriaMode: "all" });
 
   const saveOrder = (data) => {
     axios
@@ -22,14 +18,7 @@ function NewOrder() {
   };
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        console.log(formData);
-        saveOrder(formData);
-        setformData({});
-      }}
-    >
+    <form onSubmit={handleSubmit(saveOrder)}>
       <h2>New order</h2>
       <div>
         <label htmlFor="normal">
@@ -38,8 +27,7 @@ function NewOrder() {
             type="radio"
             name="crust"
             value="NORMAL"
-            required
-            onChange={(event) => onValueChange(event)}
+            ref={register({ required: true })}
           />
         </label>
 
@@ -49,37 +37,53 @@ function NewOrder() {
             type="radio"
             name="crust"
             value="THIN"
-            required
-            onChange={(event) => onValueChange(event)}
+            ref={register({ required: true })}
           />
         </label>
+
+        {errors.crust && "Crust is required"}
       </div>
 
       <label htmlFor="flavor">Flavor</label>
       <input
         name="flavor"
         type="text"
-        required
-        onChange={(event) => onValueChange(event)}
+        ref={register({
+          required: true,
+          maxLength: 10,
+        })}
       />
+      {errors.flavor?.type  === "required" && "Flavor is required"}
+      {errors.flavor?.type  === "maxLength" && "This input exceed maxLength."}
 
       <label htmlFor="size">Choose a size:</label>
 
-      <select required name="size" onChange={(event) => onValueChange(event)}>
+      <select ref={register({ required: true })} name="size">
         <option value=""></option>
         <option value="S">Small (4 pieces)</option>
         <option value="M">Medium (6 pieces)</option>
         <option value="L">Larger (8 pieces)</option>
         <option value="XL">Extra-large (10 pieces)</option>
       </select>
+      {errors.size && "Size is required"}
 
       <label htmlFor="tableNo">Table No</label>
       <input
-        required
+        ref={register({
+          required: "This is required.",
+          min: {
+            value: 1,
+            message: "The tables starts in 1",
+          },
+          max: {
+            value: 20,
+            message: "The tables ends in 20",
+          },
+        })}
         name="tableNo"
         type="number"
-        onChange={(event) => onValueChange(event)}
       />
+      <ErrorMessage errors={errors} name="tableNo" />
 
       <div className="button-container">
         <button type="submit">Save</button>
