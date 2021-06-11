@@ -4,22 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { registerMicroApps, start } from 'qiankun';
-
-// registerMicroApps([
-//   {
-//     name: 'react app', // app name registered
-//     entry: '//localhost:7200',
-//     container: '#yourContainer',
-//     activeRule: '/insured',
-//   }
-// ]);
-
-start();
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <div id="yourContainer" />
   </React.StrictMode>,
   document.getElementById('root')
 );
