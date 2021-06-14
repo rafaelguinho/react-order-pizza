@@ -12,7 +12,7 @@ function Orders() {
   }, [isLoaded]);
 
   useEffect(() => {
-    axios.get("https://localhost:5005/api/orders").then(
+    axios.get("http://localhost:5006/api/orders").then(
       (response) => {
         setIsLoaded(true);
         setItems(response.data);
