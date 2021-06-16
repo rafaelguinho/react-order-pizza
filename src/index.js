@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import { registerMicroApps, start } from 'qiankun';
+import NavBar from './components/NavBar';
 
 registerMicroApps([
   {
@@ -23,6 +24,7 @@ registerMicroApps([
 start();
 ReactDOM.render(
   <React.StrictMode>
+    <NavBar />
     <div id="yourContainer" />
   </React.StrictMode>,
   document.getElementById('root')
