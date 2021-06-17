@@ -11,14 +11,14 @@ function NavBar() {
     <nav>
       <ul>
         <li>
-          <a href="" onClick={(e) => push(e, "")}>
+          <span rule="button" onClick={(e) => push(e, "orders")}>
             Home
-          </a>
+          </span>
         </li>
         <li>
-          <a href="" onClick={(e) => push(e, "new-order")}>
+          <span rule="button" onClick={(e) => push(e, "new-order")}>
             New order
-          </a>
+          </span>
         </li>
       </ul>
     </nav>

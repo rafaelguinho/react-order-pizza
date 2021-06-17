@@ -75,7 +75,8 @@ nav li {
 
 /*Style for menu links */
 
-nav li a {
+nav li span {
+  cursor: pointer;
   display: block;
   min-width: 140px;
   height: 50px;
@@ -86,7 +87,7 @@ nav li a {
   text-decoration: none;
 }
 
-nav li:hover a {
+nav li:hover span {
   background: #636e72;
 }
 
