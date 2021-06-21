@@ -1,5 +1,4 @@
 import './public-path';
-import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NewOrder from './Components/NewOrder';

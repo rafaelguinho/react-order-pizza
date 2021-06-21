@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "../Nav";
 const { history } = window;
 
 function push(e, subapp) {
@@ -8,7 +9,7 @@ function push(e, subapp) {
 
 function NavBar() {
   return (
-    <nav>
+    <Nav>
       <ul>
         <li>
           <span rule="button" onClick={(e) => push(e, "orders")}>
@@ -21,7 +22,7 @@ function NavBar() {
           </span>
         </li>
       </ul>
-    </nav>
+    </Nav>
   );
 }
 

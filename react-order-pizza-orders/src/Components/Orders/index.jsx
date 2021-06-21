@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Order from "./Order";
+import Items from "./styles";
 
 function Orders() {
   const [error, setError] = useState(null);
@@ -30,11 +31,11 @@ function Orders() {
     return <div>Loading...</div>;
   } else {
     return (
-      <ul className="items">
+      <Items>
         {items.map((item) => (
           <Order key={item.id} item={item} />
         ))}
-      </ul>
+      </Items>
     );
   }
 }
