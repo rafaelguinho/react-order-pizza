@@ -17,7 +17,7 @@ function NewOrder() {
 
   const saveOrder = (data) => {
     axios
-      .post("https://localhost:5005/api/orders", data)
+      .post("http://localhost:5006/api/orders", data)
       .then(function (response) {
         alert("New order saved");
         reset({});
