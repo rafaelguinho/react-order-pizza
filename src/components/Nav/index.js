@@ -1,5 +1,5 @@
   
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Nav = styled.nav`
   padding-left: 0.5em;

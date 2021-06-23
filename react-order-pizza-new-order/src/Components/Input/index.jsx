@@ -1,5 +1,5 @@
   
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const inputStyle = `
 padding: 12px;
